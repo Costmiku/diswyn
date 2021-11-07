@@ -5,7 +5,7 @@ A general-purpose, self-hostable Discord bot.
 ### Prerequisites
 * Latest version of Python 3
 * pip
-* Discord bot application
+* Discord bot application<br>
 Here are the step to creating a Discord Bot account. (from [https://www.freecodecamp.org/news/create-a-discord-bot-with-python/](https://www.freecodecamp.org/news/create-a-discord-bot-with-python/))
 
 * Make sure you’re logged on to the Discord website.
