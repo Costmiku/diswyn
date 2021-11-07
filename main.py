@@ -4,6 +4,8 @@ from discord.ext import commands
 import os
 from sys import argv
 
+debug_mode = False
+
 # if env file doesn't exist or argv[1] == "setup", create it
 if not os.path.isfile("env.json") or (len(argv) > 1 and argv[1] == "setup"):
     print("Creating config file...")
@@ -11,6 +13,9 @@ if not os.path.isfile("env.json") or (len(argv) > 1 and argv[1] == "setup"):
         f.write(json.dumps({"DISCORD_TOKEN": "bot token here" if argv[2] == None else argv[2], "ADDITIONAL_OWN_PERMS": []}, indent=4))
     print("Done!")
     exit()
+elif len(argv) > 1 and argv[1] == "debug":
+    print("Debug mode enabled!")
+    debug_mode = True
 
 ENV = json.load(open('env.json'))
 data = json.load(open('data.json'))
@@ -31,9 +36,14 @@ async def on_ready():
 
 # log command usage
 @bot.listen('on_command')
-async def on_command(ctx, *error):
+async def on_command(ctx):
     print(f'{ctx.message.author} (ID {ctx.message.author.id}) used command "{ctx.message.content}"')
-    if error: print(f'Error: {error}')
+
+# if debug mode is enabled, print error to discord
+if debug_mode:
+    @bot.listen('on_command_error')
+    async def on_command_error(ctx, error):
+        await ctx.send(f'Error!\n```\n{error}```')
 
 # import commands
 for filename in os.listdir('./commands'):
