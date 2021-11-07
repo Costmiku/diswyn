@@ -4,7 +4,7 @@ from main import bot, ENV
 import json
 
 # remove owner command
-@bot.command()
+@commands.command()
 async def removeowner(ctx, user: discord.Member):
     if (ctx.message.author.id == bot.inf.owner.id) or (ctx.message.author.id in ENV['ADDITIONAL_OWN_PERMS']):
         if user.id in ENV['ADDITIONAL_OWN_PERMS']:

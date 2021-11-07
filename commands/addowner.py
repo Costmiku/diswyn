@@ -3,7 +3,6 @@ from discord.ext import commands
 from main import bot, ENV
 import json
 
-
 # add owner command
 @commands.command()
 async def addowner(ctx, user: discord.Member):
