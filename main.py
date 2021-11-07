@@ -3,6 +3,7 @@ import json
 from discord.ext import commands
 import os
 from sys import argv
+import time
 
 debug_mode = False
 
@@ -33,17 +34,20 @@ async def on_ready():
     bot.owner = f'{bot.inf.owner.name}#{bot.inf.owner.discriminator}'
     # set bot status
     await bot.change_presence(activity=discord.Game(data['status'].format(prefix=bot.command_prefix)))
+    # set bot start time
+    bot.start_time = time.time()
 
 # log command usage
 @bot.listen('on_command')
 async def on_command(ctx):
     print(f'{ctx.message.author} (ID {ctx.message.author.id}) used command "{ctx.message.content}"')
 
-# if debug mode is enabled, print error to discord
-if debug_mode:
-    @bot.listen('on_command_error')
-    async def on_command_error(ctx, error):
+# if debug mode is enabled, print error to discord, in addition to printing to console
+@bot.listen('on_command_error')
+async def on_command_error(ctx, error):
+    if debug_mode:
         await ctx.send(f'Error!\n```\n{error}```')
+    print(f'Error!\n{error}')
 
 # import commands
 for filename in os.listdir('./commands'):
