@@ -1,3 +1,5 @@
 {
-    "prefix": "!!"
+    "prefix": "$",
+    "status": "{prefix}help - Diswyn bot",
+    "version": "1.0.0"
 }
