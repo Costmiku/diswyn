@@ -2,6 +2,15 @@ import discord
 import json
 from discord.ext import commands
 import os
+from sys import argv
+
+# if env file doesn't exist or argv[1] == "setup", create it
+if not os.path.isfile("env.json") or argv[1] == "setup":
+    print("Creating config file...")
+    with open("env.json", "w") as f:
+        f.write(json.dumps({"DISCORD_TOKEN": "bot token here" if argv[2] == None else argv[2], "ADDITIONAL_OWN_PERMS": []}, indent=4))
+    print("Done!")
+    exit()
 
 ENV = json.load(open('env.json'))
 data = json.load(open('data.json'))
