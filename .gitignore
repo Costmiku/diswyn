@@ -115,3 +115,4 @@ dmypy.json
 
 # environment
 env.json
+server_data.json

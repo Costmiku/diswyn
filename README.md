@@ -1,5 +1,8 @@
 # diswyn
 A general-purpose, self-hostable Discord bot.
+```yaml
+NOTE: THIS VERSION OF THE BOT IS DISCONTINUED, DISCORD.JS VERSION SOON TO COME
+```
 
 ## Self-hosting the bot.
 ### Prerequisites
@@ -29,3 +32,5 @@ When you first install the bot, you may run it with `name_of_python3_interpreter
 ```
 If you specify an argument after `setup`, it will be used for the token. If you don't, open `env.json` and set the `"DISCORD_TOKEN"` field to your bot's token.<br>
 If something goes wrong, you can always start anew by running `name_of_python3_interpreter main.py setup` again.
+
+When you set up the bot using the setup command, a `server_data.json` file will be created. This will be used to store long-term data specific to servers such as tempmutes, tempbans etc.

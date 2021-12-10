@@ -12,6 +12,9 @@ if not os.path.isfile("env.json") or (len(argv) > 1 and argv[1] == "setup"):
     print("Creating config file...")
     with open("env.json", "w") as f:
         f.write(json.dumps({"DISCORD_TOKEN": "bot token here" if argv[2] == None else argv[2], "ADDITIONAL_OWN_PERMS": []}, indent=4))
+    print("Creating server data file...")
+    with open("server_data.json", "w") as f:
+        f.write(json.dumps({}, indent=4))
     print("Done!")
     exit()
 elif len(argv) > 1 and argv[1] == "debug":
@@ -20,6 +23,7 @@ elif len(argv) > 1 and argv[1] == "debug":
 
 ENV = json.load(open('env.json'))
 data = json.load(open('data.json'))
+server_data = json.load(open('server_data.json'))
 
 bot = commands.Bot(command_prefix=data['prefix'])
 
