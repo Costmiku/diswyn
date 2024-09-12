@@ -1,8 +1,5 @@
 # diswyn
 A general-purpose, self-hostable Discord bot.
-```yaml
-NOTE: THIS VERSION OF THE BOT IS DISCONTINUED, DISCORD.JS VERSION SOON TO COME
-```
 
 ## Self-hosting the bot.
 ### Prerequisites
